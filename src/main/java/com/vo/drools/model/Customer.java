@@ -6,26 +6,18 @@ import java.util.List;
 public class Customer {
     private CustomerLifeStage lifestage;
     private CustomerAssets assets;
+    private CustomerLocation location;
     private List<CustomerNeed> customerNeeds = new ArrayList<>();
 
     public Customer() {
         super();
     }
 
-    public void setLifeStage(CustomerLifeStage lifestage) {
+    public void setLifeStage(CustomerLifeStage lifestage) { this.lifestage = lifestage; }
 
-        this.lifestage = lifestage;
-    }
+    public CustomerLifeStage getLifeStage() { return lifestage; }
 
-    public CustomerLifeStage getLifeStage() {
-
-        return lifestage;
-    }
-
-    public void addNeed(CustomerNeed need) {
-
-        customerNeeds.add(need);
-    }
+    public void addNeed(CustomerNeed need) { customerNeeds.add(need); }
 
     public List<CustomerNeed> getNeeds() {
         return customerNeeds;
@@ -38,6 +30,15 @@ public class Customer {
     public CustomerAssets getAssets() {
         return assets;
     }
+
+    public void setLocation(CustomerLocation location) {
+        this.location = location;
+    }
+
+    public CustomerLocation getLocation() {
+        return location;
+    }
+
 
     public enum CustomerNeed {
         SAVINGACCOUNT,
@@ -63,4 +64,8 @@ public class Customer {
         OVER300K
     }
 
+    public enum CustomerLocation {
+        PLANO,
+        LEWISVILLE
+    }
 }

@@ -24,7 +24,7 @@ public class DiscountExcelIntegrationTest {
     }
 
     @Test
-    public void givenIndvidualLongStanding_whenFireRule_thenCorrectOffer() {
+    public void givenMidAsset3Needs_whenFireRule_thenCorrectOffer() {
         // Add a Customer with its personal data and needs, used for the LHS Decision
         Customer customer = new Customer();
         customer.setLifeStage(Customer.CustomerLifeStage.CAREERFOCUSED);
@@ -33,7 +33,7 @@ public class DiscountExcelIntegrationTest {
         customer.addNeed(Customer.CustomerNeed.SAVINGACCOUNT);
         customer.addNeed(Customer.CustomerNeed.MORTAGE);
         kSession.insert(customer);
-        // Now we add the global variable which we use to communicate back our
+//         Now we add the global variable which we use to communicate back
         Offer offer = new Offer();
         kSession.setGlobal("offer", offer);
         kSession.fireAllRules();
@@ -44,5 +44,35 @@ public class DiscountExcelIntegrationTest {
         assertEquals(offer.getProducts().contains(Offer.Product.LOAN), true);
     }
 
+    @Test
+    public void givenCareerFocusedLowAsset_whenFireRule_thenCareerFocusedOffer() {
+        Customer customer = new Customer();
+        customer.setLifeStage(Customer.CustomerLifeStage.CAREERFOCUSED);
+        customer.setAssets(Customer.CustomerAssets.TO50K);
+        kSession.insert(customer);
+
+        Offer offer = new Offer();
+        kSession.setGlobal("offer", offer);
+        kSession.fireAllRules();
+
+        assertEquals(offer.getDiscount(), 0);
+        assertEquals(offer.getProducts().size(), 0);
+        assertEquals(offer.getFinancialPackage(), Offer.ProductPackage.CAREERFOCUSED_PACKAGE);
+    }
+
+    @Test
+    public void givenPlanoLocation_whenFireRule_thenCorrectOffer() {
+        Customer customer = new Customer();
+        customer.setLocation(Customer.CustomerLocation.PLANO);
+        kSession.insert(customer);
+
+        Offer offer = new Offer();
+        kSession.setGlobal("offer", offer);
+        kSession.fireAllRules();
+
+        assertEquals(0, offer.getProducts().size());
+        assertEquals(null, offer.getFinancialPackage());
+        assertEquals(20, offer.getDiscount());
+    }
 
 }

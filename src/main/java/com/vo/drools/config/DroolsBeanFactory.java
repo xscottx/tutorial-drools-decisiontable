@@ -17,10 +17,11 @@ public class DroolsBeanFactory {
 
 
     public KieSession getKieSession(Resource dt) {
-        KieFileSystem kieFileSystem = kieServices.newKieFileSystem()
+        KieFileSystem kieFileSystem = kieServices
+                .newKieFileSystem()
                 .write(dt);
 
-        KieBuilder kieBuilder = kieServices.newKieBuilder(kieFileSystem)
+        kieServices.newKieBuilder(kieFileSystem)
                 .buildAll();
 
         KieRepository kieRepository = kieServices.getRepository();
@@ -29,15 +30,10 @@ public class DroolsBeanFactory {
 
         KieContainer kieContainer = kieServices.newKieContainer(krDefaultReleaseId);
 
-        KieSession ksession = kieContainer.newKieSession();
-
-        return ksession;
+        return kieContainer.newKieSession();
     }
 
-    /*
-     * Can be used for debugging
-     * Input excelFile example: com/baeldung/drools/rules/Discount.xls
-     */
+    // Used just for debugging purposes to verify the Excel file has been unmarshalled correctly
     public String getDrlFromExcel(String excelFile) {
         DecisionTableConfiguration configuration = KnowledgeBuilderFactory.newDecisionTableConfiguration();
         configuration.setInputType(DecisionTableInputType.XLS);
