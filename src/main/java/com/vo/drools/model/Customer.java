@@ -1,4 +1,4 @@
-package net.cloudburo.drools.model;
+package com.vo.drools.model;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,7 +47,6 @@ public class Customer {
         MORTAGE
     }
 
-    // https://www.peoples-ebank.com/lifestages.html
     public enum CustomerLifeStage {
         GETTINGSTARTED,
         CAREERFOCUSED,

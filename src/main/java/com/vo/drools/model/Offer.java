@@ -1,4 +1,4 @@
-package net.cloudburo.drools.model;
+package com.vo.drools.model;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,4 @@
-package net.cloudburo.drools.config;
+package com.vo.drools.config;
 
 import org.drools.decisiontable.DecisionTableProviderImpl;
 import org.kie.api.KieServices;
