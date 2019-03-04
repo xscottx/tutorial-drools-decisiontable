@@ -24,7 +24,7 @@ public class DiscountExcelIntegrationTest {
     }
 
     @Test
-    public void giveIndvidualLongStanding_whenFireRule_thenCorrectDiscount() throws Exception {
+    public void givenIndvidualLongStanding_whenFireRule_thenCorrectDiscount() throws Exception {
         // Add a Customer with its personal data and needs, used for the LHS Decision
         Customer customer = new Customer();
         customer.setLifeStage(Customer.CustomerLifeStage.CAREERFOCUSED);
@@ -39,7 +39,7 @@ public class DiscountExcelIntegrationTest {
         kSession.fireAllRules();
         assertEquals(offer.getDiscount(), 10);
         assertEquals(offer.getFinancialPackage(), Offer.ProductPackage.CAREERFOCUSED_PACKAGE);
-        assertEquals(offer.getProducts().size(),2);
+        assertEquals(offer.getProducts().size(), 2);
     }
 
 

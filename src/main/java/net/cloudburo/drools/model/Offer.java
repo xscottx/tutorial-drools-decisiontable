@@ -25,7 +25,7 @@ public class Offer {
         return financialPackage;
     }
 
-    public void addSingleProduct(Product prod){
+    public void addSingleProduct(Product prod) {
         products.add(prod);
     }
 

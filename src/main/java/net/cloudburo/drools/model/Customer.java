@@ -9,7 +9,7 @@ public class Customer {
     private List<CustomerNeed> customerNeeds = new ArrayList<>();
 
     public Customer() {
-        super();   
+        super();
     }
 
     public void setLifeStage(CustomerLifeStage lifestage) {

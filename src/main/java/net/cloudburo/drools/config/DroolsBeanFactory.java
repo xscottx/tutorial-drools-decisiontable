@@ -13,15 +13,15 @@ import org.kie.internal.io.ResourceFactory;
 
 public class DroolsBeanFactory {
 
-    private KieServices kieServices=KieServices.Factory.get();
+    private KieServices kieServices = KieServices.Factory.get();
 
 
     public KieSession getKieSession(Resource dt) {
         KieFileSystem kieFileSystem = kieServices.newKieFileSystem()
-            .write(dt);
+                .write(dt);
 
         KieBuilder kieBuilder = kieServices.newKieBuilder(kieFileSystem)
-            .buildAll();
+                .buildAll();
 
         KieRepository kieRepository = kieServices.getRepository();
 
